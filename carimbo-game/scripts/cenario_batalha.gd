@@ -8,12 +8,12 @@ extends Node2D
 
 @onready var tela_batalha: CanvasLayer = $tela_batalha
 @export var inimigo: BatalhasManager.INIMIGOS
+const CREDITOS = preload(Constants.UID_SCENES[Constants.TELAS.TELA_CREDITOS])
 
 var enemy: AnimatedSprite2D
 
 const MUSICA = preload("uid://bssweesetteg2")
 const TELA_PAUSE = preload(Constants.UID_SCENES[Constants.TELAS.TELA_PAUSE])
-var proxima_tela:= Constants.TELAS.TELA_CREDITOS
 
 func _ready() -> void:
 	SoundManager.change_musica(MUSICA, false, true)
@@ -60,5 +60,4 @@ func _on_tela_batalha_enemy_damaged() -> void:
 
 func _on_tela_batalha_batalha_finalizada(_vitoria: bool) -> void:
 	enemy.play("win")
-	var next_scene = Constants.UID_SCENES[proxima_tela]
-	get_tree().change_scene_to_file(next_scene)
+	get_tree().change_scene_to_packed(CREDITOS)
