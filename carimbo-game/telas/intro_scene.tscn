@@ -15,30 +15,27 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bw1x2")
 scene = ExtResource("2_5q3ek")
+stamp_sfx = ExtResource("1_sjow0")
 
-[node name="Background" type="ColorRect" parent="." unique_id=345525077]
-layout_mode = 0
-offset_left = -19.0
-offset_top = -22.0
-offset_right = 1298.0
-offset_bottom = 742.0
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1666077513]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="MarginContainer" unique_id=345525077]
+layout_mode = 2
 color = Color(0.043137256, 0.043137256, 0.043137256, 1)
 
-[node name="Subtitle" type="Label" parent="." unique_id=380057783]
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 720.0
-pivot_offset = Vector2(640, 12)
+[node name="Subtitle" type="Label" parent="MarginContainer" unique_id=380057783]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("3_of2if")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Texto de teste"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="SFXPlayer" type="AudioStreamPlayer2D" parent="." unique_id=333295150]
-stream = ExtResource("1_sjow0")
-volume_db = 24.0
-bus = &"Efeitos sonoros"
 
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=681082436]
 stream = ExtResource("4_5q3ek")

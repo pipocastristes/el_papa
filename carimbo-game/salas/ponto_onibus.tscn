@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://btju0ygewfqvf"]
+
+[ext_resource type="Script" uid="uid://yd02uh3r6t4l" path="res://scripts/ponto_onibus.gd" id="1_tv87c"]
+[ext_resource type="Texture2D" uid="uid://bn14mkeydtfyr" path="res://sprites/cenarios/ponto.png" id="2_mjyrg"]
+[ext_resource type="Texture2D" uid="uid://bkvgq3d21ro36" path="res://sprites/cenarios/ponto_poste.png" id="3_mjyrg"]
+[ext_resource type="Texture2D" uid="uid://drs40ksujxfvh" path="res://sprites/cenarios/ponto_poste_luz.png" id="4_px1nh"]
+[ext_resource type="Script" uid="uid://s4xh01ul10ux" path="res://scripts/flicker_light.gd" id="5_8y1dv"]
+[ext_resource type="Script" uid="uid://8a10qeoejo8i" path="res://scripts/door.gd" id="6_5lpre"]
+[ext_resource type="Texture2D" uid="uid://wups61e4x2js" path="res://sprites/cenarios/light_door.png" id="7_rm74c"]
+[ext_resource type="Script" uid="uid://dvv0bwbh8tyys" path="res://scripts/door_highlight.gd" id="8_rm74c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_opscn"]
+size = Vector2(241, 1097)
+
+[node name="PontoOnibus" type="Node2D" unique_id=603995128]
+script = ExtResource("1_tv87c")
+
+[node name="Cenario" type="Node2D" parent="." unique_id=1327152022]
+
+[node name="Background" type="Sprite2D" parent="Cenario" unique_id=1916127463]
+position = Vector2(960, 540)
+scale = Vector2(3, 3)
+texture = ExtResource("2_mjyrg")
+
+[node name="Foreground" type="Sprite2D" parent="Cenario" unique_id=1300391638]
+z_index = 4
+position = Vector2(960, 540)
+scale = Vector2(3, 3)
+texture = ExtResource("3_mjyrg")
+
+[node name="PosteLuz" type="PointLight2D" parent="Cenario" unique_id=1094024142]
+position = Vector2(976, 541)
+scale = Vector2(3, 3)
+energy = 0.5
+texture = ExtResource("4_px1nh")
+script = ExtResource("5_8y1dv")
+max_light = 0.5
+min_timer = 5.0
+max_timer = 20.0
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=970435760]
+
+[node name="ponto_dir" type="Marker2D" parent="SpawnPoints" unique_id=1807926567]
+position = Vector2(1756, 899)
+
+[node name="ponto_ponto" type="Marker2D" parent="SpawnPoints" unique_id=2008402646]
+position = Vector2(973, 899)
+
+[node name="Interagiveis" type="Node2D" parent="." unique_id=2043956572]
+
+[node name="Escritorio" type="Area2D" parent="Interagiveis" unique_id=417637628]
+z_index = 5
+position = Vector2(-4, 0)
+script = ExtResource("6_5lpre")
+cena_destino = 5
+spawn_destino = "entrada"
+texto_interacao = "Escritório"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interagiveis/Escritorio" unique_id=1977607842]
+position = Vector2(1806.5, 538)
+shape = SubResource("RectangleShape2D_opscn")
+
+[node name="PointLight2D" type="PointLight2D" parent="Interagiveis/Escritorio" unique_id=370770436]
+position = Vector2(1797.5, 540.00006)
+scale = Vector2(1.2962962, 1)
+color = Color(1, 1, 0.50980395, 1)
+texture = ExtResource("7_rm74c")
+
+[node name="PlacaOnibus" type="Area2D" parent="Interagiveis" unique_id=2132806516]
+script = ExtResource("8_rm74c")
+cena_destino = 7
+spawn_destino = "casa_dir"
+texto_interacao = "Ir Para Casa"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Interagiveis/PlacaOnibus" unique_id=1107486388]
+position = Vector2(0, -1)
+polygon = PackedVector2Array(438, 738, 447, 738, 447, 364, 492, 364, 492, 364, 492, 243, 402, 243, 402, 364, 438, 364, 438, 737)
+
+[node name="Destaques" type="Node2D" parent="Interagiveis/PlacaOnibus" unique_id=311917684]
+
+[node name="ColorRect1" type="ColorRect" parent="Interagiveis/PlacaOnibus/Destaques" unique_id=1940513903]
+modulate = Color(1, 1, 1, 0.21100001)
+offset_left = 402.0
+offset_top = 242.0
+offset_right = 492.0
+offset_bottom = 363.0
+pivot_offset = Vector2(45, 61)
+
+[node name="ColorRect2" type="ColorRect" parent="Interagiveis/PlacaOnibus/Destaques" unique_id=2144805274]
+modulate = Color(1, 1, 1, 0.21100001)
+offset_left = 438.0
+offset_top = 363.0
+offset_right = 447.0
+offset_bottom = 738.0
+pivot_offset = Vector2(45, 61)

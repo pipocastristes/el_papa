@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://di2frw21hjxmy"]
+
+[ext_resource type="Script" uid="uid://bfsknk18663ov" path="res://scripts/rh.gd" id="1_c5h5h"]
+[ext_resource type="Texture2D" uid="uid://wups61e4x2js" path="res://sprites/cenarios/light_door.png" id="2_dl03l"]
+[ext_resource type="Texture2D" uid="uid://2t5e313kw731" path="res://sprites/cenarios/rh.png" id="2_hxuy7"]
+[ext_resource type="Script" uid="uid://8a10qeoejo8i" path="res://scripts/door.gd" id="3_hxuy7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4jt0h"]
+size = Vector2(241, 1097)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dl03l"]
+size = Vector2(248, 1097)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hxuy7"]
+size = Vector2(296, 565.5)
+
+[node name="RecursosHumanos" type="Node2D" unique_id=911761623]
+script = ExtResource("1_c5h5h")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=588049576]
+position = Vector2(1030.2129, 540.00006)
+scale = Vector2(3.2194152, 3)
+texture = ExtResource("2_hxuy7")
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=1198254769]
+
+[node name="rh_dir" type="Marker2D" parent="SpawnPoints" unique_id=1920540161]
+position = Vector2(1705, 1030)
+
+[node name="rh_esq" type="Marker2D" parent="SpawnPoints" unique_id=886712484]
+position = Vector2(167, 1030)
+
+[node name="rh_sala" type="Marker2D" parent="SpawnPoints" unique_id=97329001]
+position = Vector2(1048, 1030)
+
+[node name="Interagiveis" type="Node2D" parent="." unique_id=1993122159]
+
+[node name="Corredor2" type="Area2D" parent="Interagiveis" unique_id=1062072335]
+position = Vector2(-4, 0)
+script = ExtResource("3_hxuy7")
+cena_destino = 2
+spawn_destino = "corredor_2_esq"
+texto_interacao = "Corredor"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interagiveis/Corredor2" unique_id=1403848632]
+position = Vector2(1806.5, 538)
+shape = SubResource("RectangleShape2D_4jt0h")
+
+[node name="PointLight2D" type="PointLight2D" parent="Interagiveis/Corredor2" unique_id=1111958132]
+position = Vector2(1797.5, 540.00006)
+scale = Vector2(1.2962962, 1)
+color = Color(1, 1, 0.50980395, 1)
+texture = ExtResource("2_dl03l")
+
+[node name="Fabrica" type="Area2D" parent="Interagiveis" unique_id=1272030576]
+position = Vector2(-4, 0)
+script = ExtResource("3_hxuy7")
+cena_destino = 1
+spawn_destino = "fab_dir"
+texto_interacao = "Fabrica de Brinquedos"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interagiveis/Fabrica" unique_id=1352180200]
+position = Vector2(114, 538.5)
+shape = SubResource("RectangleShape2D_dl03l")
+
+[node name="PointLight2D" type="PointLight2D" parent="Interagiveis/Fabrica" unique_id=283775127]
+position = Vector2(119.99999, 540)
+rotation = 3.1415927
+scale = Vector2(1.2962962, 1)
+color = Color(1, 1, 0.50980395, 1)
+texture = ExtResource("2_dl03l")
+
+[node name="SalaRH" type="Area2D" parent="Interagiveis" unique_id=1552993933]
+script = ExtResource("3_hxuy7")
+cena_destino = 8
+spawn_destino = "sala_rh"
+texto_interacao = "Sala dos Recursos Humanos"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interagiveis/SalaRH" unique_id=1379250892]
+position = Vector2(1030, 499.25)
+shape = SubResource("RectangleShape2D_hxuy7")
+
+[node name="PointLight2D" type="PointLight2D" parent="Interagiveis/SalaRH" unique_id=1513445299]
+position = Vector2(1029.777, 498.55188)
+rotation = 3.1415927
+scale = Vector2(1.5613078, 0.5210126)
+texture = ExtResource("2_dl03l")

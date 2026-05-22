@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var objetivo_label: Label = $ObjetivoLabel
+@onready var objetivo_label: Label = $MarginContainer/VBoxContainer/HBoxContainer/ObjetivoLabel
 
 func _ready() -> void:
 	GameManager.objetivo_atualizado.connect(_objetivo_atualizado)

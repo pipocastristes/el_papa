@@ -9,32 +9,30 @@
 script = ExtResource("1_xrbiq")
 dialogues_stream = Array[AudioStream]([ExtResource("4_vjclk"), ExtResource("3_eep17")])
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=981619889]
-visible = false
-anchors_preset = -1
-anchor_top = 0.84200007
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1999466348]
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.94600004
-offset_top = -0.24005127
-offset_bottom = -0.12005615
-grow_horizontal = 2
-grow_vertical = 0
-color = Color(0, 0, 0, 0.16862746)
-
-[node name="Label" type="Label" parent="ColorRect" unique_id=661500895]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 18.0
-offset_top = -11.5
-offset_right = -18.0
-offset_bottom = 11.5
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_top = 891
+theme_override_constants/margin_bottom = 50
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer" unique_id=981619889]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 0.16862746)
+
+[node name="Label" type="Label" parent="MarginContainer/ColorRect" unique_id=661500895]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_xrbiq")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "testes de texto aqui ó"
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -1,9 +1,9 @@
 extends Control
 
-@onready var subtitle: Label = $Subtitle
-@onready var sfx_player: AudioStreamPlayer2D = $SFXPlayer
+@onready var subtitle: Label = $MarginContainer/Subtitle
 @onready var music: AudioStreamPlayer2D = $Music
 @export var scene: PackedScene
+@export var stamp_sfx: AudioStream
 const NOITE_CLT = preload("uid://bbh2vyrjcsbgd")
 
 var intro_steps = [
@@ -29,7 +29,7 @@ func run_sequence():
 		
 		if step.text != "":
 			if cont == intro_steps.size() - 1:
-				subtitle.add_theme_font_size_override("font_size", 36)
+				subtitle.add_theme_font_size_override("font_size", 50)
 			subtitle.text = step.text
 			await fade_text(true)
 		
@@ -37,7 +37,7 @@ func run_sequence():
 			music.stream_paused = true
 			
 		if step.get('sfx', false):
-			sfx_player.play()
+			SoundManager.play_sfx(stamp_sfx)
 			
 		await get_tree().create_timer(step.delay).timeout
 		

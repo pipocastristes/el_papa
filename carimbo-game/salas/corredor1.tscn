@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://bsugtk4ao1xgx"]
+
+[ext_resource type="Script" uid="uid://cg43lk8ixhnuw" path="res://scripts/corredor1.gd" id="1_lgr4q"]
+[ext_resource type="Script" uid="uid://bsq0tocxvxl8w" path="res://scripts/quadro.gd" id="2_5kkfb"]
+[ext_resource type="Texture2D" uid="uid://cvb1onr4oaisl" path="res://sprites/cenarios/corredor1.png" id="2_cbves"]
+[ext_resource type="Texture2D" uid="uid://wups61e4x2js" path="res://sprites/cenarios/light_door.png" id="3_cbves"]
+[ext_resource type="Script" uid="uid://8a10qeoejo8i" path="res://scripts/door.gd" id="4_5kkfb"]
+[ext_resource type="Texture2D" uid="uid://dnkwmfo6iwrhq" path="res://sprites/cenarios/luz_porta_escritorio.png" id="6_4s22e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2f3iu"]
+size = Vector2(300, 424)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l6ksm"]
+size = Vector2(210.5, 1080)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6pia8"]
+size = Vector2(421, 906.5)
+
+[node name="Corredor1" type="Node2D" unique_id=1600389292]
+script = ExtResource("1_lgr4q")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=854024990]
+position = Vector2(960.00006, 539.99994)
+scale = Vector2(3, 3)
+texture = ExtResource("2_cbves")
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=1907942494]
+
+[node name="corredor_1_escr" type="Marker2D" parent="SpawnPoints" unique_id=846908145]
+position = Vector2(848, 1019)
+
+[node name="corredor_1_dir" type="Marker2D" parent="SpawnPoints" unique_id=35682026]
+position = Vector2(1751, 1030)
+
+[node name="corredor_1_esq" type="Marker2D" parent="SpawnPoints" unique_id=669348719]
+position = Vector2(166, 1028)
+
+[node name="Interagiveis" type="Node2D" parent="." unique_id=1083673238]
+
+[node name="Quadro" type="Area2D" parent="Interagiveis" unique_id=357796896]
+position = Vector2(126, 69)
+script = ExtResource("2_5kkfb")
+texto_interacao = "Tirar Foto do Quadro"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interagiveis/Quadro" unique_id=1830837586]
+position = Vector2(378, 332)
+shape = SubResource("RectangleShape2D_2f3iu")
+
+[node name="ColorRect" type="ColorRect" parent="Interagiveis/Quadro" unique_id=682754175]
+modulate = Color(1, 1, 1, 0)
+offset_left = 228.0
+offset_top = 120.0
+offset_right = 528.0
+offset_bottom = 545.0
+
+[node name="SalaSupervisor" type="Area2D" parent="Interagiveis" unique_id=705186832]
+script = ExtResource("4_5kkfb")
+cena_destino = 4
+spawn_destino = "principal"
+texto_interacao = "Sala do Supervisor"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interagiveis/SalaSupervisor" unique_id=1106122479]
+position = Vector2(1817.25, 540)
+shape = SubResource("RectangleShape2D_l6ksm")
+
+[node name="PointLight2D" type="PointLight2D" parent="Interagiveis/SalaSupervisor" unique_id=1604386963]
+position = Vector2(1797.5, 540.00006)
+scale = Vector2(1.2962962, 1)
+color = Color(1, 1, 0.50980395, 1)
+texture = ExtResource("3_cbves")
+
+[node name="Corredor2" type="Area2D" parent="Interagiveis" unique_id=101519940]
+script = ExtResource("4_5kkfb")
+cena_destino = 2
+spawn_destino = "corredor_2_dir"
+texto_interacao = "Corredor"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interagiveis/Corredor2" unique_id=589211053]
+position = Vector2(104, 540)
+shape = SubResource("RectangleShape2D_l6ksm")
+
+[node name="PointLight2D" type="PointLight2D" parent="Interagiveis/Corredor2" unique_id=814497153]
+position = Vector2(119.99999, 540)
+rotation = 3.1415927
+scale = Vector2(1.2962962, 1)
+color = Color(1, 1, 0.50980395, 1)
+texture = ExtResource("3_cbves")
+
+[node name="Escritorio" type="Area2D" parent="Interagiveis" unique_id=1416307018]
+script = ExtResource("4_5kkfb")
+cena_destino = 5
+spawn_destino = "porta"
+light_max = 0.7
+texto_interacao = "Escritório"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interagiveis/Escritorio" unique_id=1522350745]
+position = Vector2(1161.5, 625.25)
+shape = SubResource("RectangleShape2D_6pia8")
+
+[node name="PointLight2D" type="PointLight2D" parent="Interagiveis/Escritorio" unique_id=746576672]
+position = Vector2(1161.5001, 625.18555)
+scale = Vector2(2.053659, 2.0536592)
+texture = ExtResource("6_4s22e")

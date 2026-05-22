@@ -14,7 +14,7 @@ func start_dialogue(dialogues: Array, block := true):
 	block_input = block
 	
 	dialogue_instance = dialogue_scene.instantiate()
-	get_tree().root.add_child(dialogue_instance)
+	get_tree().root.add_child.call_deferred(dialogue_instance)
 	
 	dialogue_instance.start(dialogues, block)
 	

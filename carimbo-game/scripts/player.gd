@@ -12,12 +12,9 @@ var interagivel_atual: Interagivel = null
 
 func _ready() -> void:
 	interacao_prompt.visible = false
-	if GameManager.tutorial and GameManager.tutorial_phase == 7:
-		GameManager.tutorial_phase += 1
-		GameManager.next_tutorial(7)
 
 func _physics_process(_delta):
-	if DialogueManager.block_input:
+	if DialogueManager.block_input || GameManager.trocando_sala:
 		return
 	
 	if interagivel_atual and Input.is_action_just_pressed("interagir"):
@@ -27,13 +24,12 @@ func _physics_process(_delta):
 	var direction := 0
 	
 	if Input.is_action_pressed("para_direita"):
-		if GameManager.tutorial and GameManager.tutorial_phase == 8:
-			GameManager.finish_tutorial()
 		direction += 1
 	if Input.is_action_pressed("para_esquerda"):
-		if GameManager.tutorial and GameManager.tutorial_phase == 8:
-			GameManager.finish_tutorial()
 		direction -= 1
+
+	if direction != 0 and GameManager.tutorial:
+			EventManager.player_moved.emit()
 
 	# Movimento horizontal
 	velocity.x = direction * speed
@@ -43,7 +39,7 @@ func _physics_process(_delta):
 	if direction == 0:
 		sprite.play("idle")
 	else:
-		sprite.play("run")
+		sprite.play("walk")
 		sprite.flip_h = direction > 0
 		
 func mostrar_prompt_interacao(ativo: bool):

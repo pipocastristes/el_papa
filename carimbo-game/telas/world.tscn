@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://crai6bkwh21uc"]
+
+[ext_resource type="PackedScene" uid="uid://bmyu4ughrjvi5" path="res://prefabs/felco.tscn" id="1_vk50x"]
+[ext_resource type="Script" uid="uid://bnlv50wphl573" path="res://scripts/world.gd" id="1_why65"]
+[ext_resource type="PackedScene" uid="uid://blaos3mogukft" path="res://prefabs/label_ui.tscn" id="3_w7a07"]
+
+[node name="World" type="Node2D" unique_id=1122487762]
+script = ExtResource("1_why65")
+
+[node name="labelUI" parent="." unique_id=1746972209 instance=ExtResource("3_w7a07")]
+
+[node name="Felco" parent="." unique_id=1326828819 instance=ExtResource("1_vk50x")]
+z_index = 2
+position = Vector2(1713, 1007)
+scale = Vector2(3.5799975, 3.5799975)
+speed = 400.0
+
+[node name="SalaContainer" type="Node2D" parent="." unique_id=1501082481]
+
+[node name="FadeLayer" type="CanvasLayer" parent="." unique_id=1917492502]
+
+[node name="ColorRect" type="ColorRect" parent="FadeLayer" unique_id=1951130653]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

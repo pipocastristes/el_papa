@@ -42,11 +42,7 @@ func apply_mark():
 	return_home()
 
 func pick_up():
-	if GameManager.tutorial and GameManager.tutorial_phase == 4:
-		GameManager.tutorial_phase += 1
-		GameManager.next_tutorial(4)
-	elif GameManager.tutorial and GameManager.tutorial_phase != 4:
-		return
+	EventManager.player_get_stamp.emit()
 	
 	SoundManager.play_sfx(get_stream)
 	is_held = true
@@ -56,9 +52,6 @@ func pick_up():
 	desk.held_type = type
 
 func return_home():
-	if GameManager.tutorial and GameManager.tutorial_phase == 5:
-		return
-	
 	is_held = false
 	z_index = 1
 	monitoring = false
@@ -84,9 +77,6 @@ func _on_area_exited(area: Area2D) -> void:
 		modulate = Color(1, 1, 1)
 
 func _on_mouse_entered() -> void:
-	if GameManager.tutorial and GameManager.tutorial_phase == 0:
-		return
-	
 	var tween = create_tween()
 	tween.tween_property(self, "modulate", Color(1.08, 1.08, 1.08, 1), 0.15)
 

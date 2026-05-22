@@ -3,37 +3,24 @@
 [ext_resource type="Script" uid="uid://31rhsf7w53jr" path="res://scripts/label_ui.gd" id="1_fihbp"]
 [ext_resource type="FontFile" uid="uid://chnx81mwq17x0" path="res://fonts/VT323-Regular.ttf" id="1_xt10e"]
 
-[node name="labelUI" type="Control" unique_id=1000752948 groups=["ui_label"]]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="labelUI" type="CanvasLayer" unique_id=1746972209 groups=["ui_label"]]
 script = ExtResource("1_fihbp")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1338897756]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 961
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 25
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=339200504]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=718286542]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1929009804 groups=["ui_label"]]
+[node name="Label" type="Label" parent="MarginContainer" unique_id=1929009804 groups=["ui_label"]]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_xt10e")
-theme_override_font_sizes/font_size = 37
+theme_override_font_sizes/font_size = 45
 text = "CORREDOR"
+horizontal_alignment = 1
+vertical_alignment = 1

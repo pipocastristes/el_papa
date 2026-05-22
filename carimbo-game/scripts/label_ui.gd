@@ -1,7 +1,7 @@
-extends Control
+extends CanvasLayer
 class_name LabelUI
 
-@onready var label: Label = $MarginContainer/HBoxContainer/VBoxContainer/Label
+@onready var label: Label = $MarginContainer/Label
 
 func _ready() -> void:
 	label.visible = false

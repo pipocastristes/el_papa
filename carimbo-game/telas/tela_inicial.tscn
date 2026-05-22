@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://7db7k17i621u" path="res://scripts/tela_inicial.gd" id="1_xs8lk"]
 [ext_resource type="Texture2D" uid="uid://0n7rcssp3ke7" path="res://sprites/Menu Game El PAPA .png" id="2_5bdny"]
 [ext_resource type="Theme" uid="uid://ctd3ggxnomyt2" path="res://temas/tema_ui.tres" id="2_6hiqg"]
-[ext_resource type="Theme" uid="uid://4h2384ue2d34" path="res://temas/teste.tres" id="3_5sd8u"]
+[ext_resource type="Theme" uid="uid://4h2384ue2d34" path="res://temas/initial_button.tres" id="3_5sd8u"]
 
 [node name="tela_inicial" type="Control" unique_id=353792806]
 process_mode = 3
@@ -25,8 +25,8 @@ grow_vertical = 2
 color = Color(0.03137255, 0.05490196, 0.07058824, 1)
 
 [node name="MenuGameElPapa" type="Sprite2D" parent="fundo" unique_id=1345537722]
-position = Vector2(641, 356)
-scale = Vector2(2.0109375, 1.9972223)
+position = Vector2(970.8048, 540.25)
+scale = Vector2(3.0415776, 3.0208333)
 texture = ExtResource("2_5bdny")
 
 [node name="margin" type="MarginContainer" parent="." unique_id=124735404]
@@ -42,57 +42,63 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 32
-theme_override_constants/margin_right = 87
-theme_override_constants/margin_bottom = 80
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
 
 [node name="HBoxContainer" type="HBoxContainer" parent="margin" unique_id=888638415]
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 0
 size_flags_vertical = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="margin/HBoxContainer" unique_id=171905427]
 layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 8
 theme = ExtResource("2_6hiqg")
+
+[node name="Label" type="Label" parent="margin/HBoxContainer/VBoxContainer" unique_id=1980731402]
+layout_mode = 2
+text = "VERSÃO 0.1.0"
 
 [node name="novo_jogo_btn" type="Button" parent="." unique_id=1066986068]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 0
-offset_left = 870.0
-offset_top = 85.0
-offset_right = 1211.0
-offset_bottom = 189.0
+offset_left = 1429.0
+offset_top = 169.0
+offset_right = 1699.0
+offset_bottom = 244.0
 theme = ExtResource("3_5sd8u")
+theme_override_font_sizes/font_size = 75
 text = "NOVO JOGO
 "
 
 [node name="configurar_btn" type="Button" parent="." unique_id=151254374]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 0
-offset_left = 939.0
-offset_top = 261.0
-offset_right = 1224.0
-offset_bottom = 330.0
+offset_left = 1534.0
+offset_top = 423.0
+offset_right = 1734.0
+offset_bottom = 473.0
 theme = ExtResource("3_5sd8u")
 text = "CONFIGURAÇÕES"
 
 [node name="creditos_btn" type="Button" parent="." unique_id=86156091]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 0
-offset_left = 940.0
-offset_top = 366.0
-offset_right = 1224.0
-offset_bottom = 439.0
+offset_left = 1530.0
+offset_top = 583.0
+offset_right = 1730.0
+offset_bottom = 633.0
 theme = ExtResource("3_5sd8u")
 text = "CRÉDITOS"
 
 [node name="sair_btn" type="Button" parent="." unique_id=1907102265]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 0
-offset_left = 937.0
-offset_top = 469.0
-offset_right = 1222.0
-offset_bottom = 543.0
+offset_left = 1539.0
+offset_top = 744.0
+offset_right = 1739.0
+offset_bottom = 794.0
 theme = ExtResource("3_5sd8u")
 text = "SAIR DO JOGO"
 

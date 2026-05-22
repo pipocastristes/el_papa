@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cnvko75fd3ry5"]
+
+[ext_resource type="Texture2D" uid="uid://u5s5up7exha8" path="res://sprites/cenarios/sala_rh.png" id="1_4fb2p"]
+[ext_resource type="Script" uid="uid://3u6qrrcxfprv" path="res://scripts/sala_rh.gd" id="1_6xihk"]
+[ext_resource type="Script" uid="uid://8a10qeoejo8i" path="res://scripts/door.gd" id="2_p1w4a"]
+[ext_resource type="Texture2D" uid="uid://wups61e4x2js" path="res://sprites/cenarios/light_door.png" id="3_6xihk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j1f6o"]
+size = Vector2(248, 1097)
+
+[node name="SalaRH" type="Node2D" unique_id=1320845022]
+script = ExtResource("1_6xihk")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1669673257]
+position = Vector2(960.00006, 540)
+scale = Vector2(3, 3.0000002)
+texture = ExtResource("1_4fb2p")
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=1766910611]
+
+[node name="sala_rh" type="Marker2D" parent="SpawnPoints" unique_id=156391512]
+position = Vector2(166, 1030)
+
+[node name="Interagiveis" type="Node2D" parent="." unique_id=1740643732]
+position = Vector2(960.00006, 540)
+scale = Vector2(3, 3.0000002)
+
+[node name="CorredorRH" type="Area2D" parent="Interagiveis" unique_id=1351063326]
+position = Vector2(-321.33334, -179.99997)
+scale = Vector2(0.3333333, 0.33333328)
+script = ExtResource("2_p1w4a")
+spawn_destino = "rh_sala"
+texto_interacao = "Corredor Recursos Humanos"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interagiveis/CorredorRH" unique_id=480639954]
+position = Vector2(114, 538.5)
+shape = SubResource("RectangleShape2D_j1f6o")
+
+[node name="PointLight2D" type="PointLight2D" parent="Interagiveis/CorredorRH" unique_id=612891969]
+position = Vector2(119.99999, 540)
+rotation = 3.1415927
+scale = Vector2(1.2962962, 1)
+color = Color(1, 1, 0.50980395, 1)
+texture = ExtResource("3_6xihk")

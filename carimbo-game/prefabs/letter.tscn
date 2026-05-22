@@ -124,42 +124,42 @@ marks = Array[Texture]([ExtResource("2_eftyu"), ExtResource("3_j1fwd")])
 
 [node name="Envelope" type="AnimatedSprite2D" parent="." unique_id=1948925570]
 position = Vector2(-1.3554151, 59.19996)
-scale = Vector2(0.5867731, 0.5867731)
+scale = Vector2(0.9352927, 0.9352927)
 sprite_frames = SubResource("SpriteFrames_eftyu")
-animation = &"open_ruim"
+animation = &"close_boa"
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1210813413]
 modulate = Color(1.0845727, 1.0845727, 1.0845727, 1)
 position = Vector2(0, -14.285689)
-scale = Vector2(1.2827498, 1.2827498)
+scale = Vector2(2.0446515, 2.0446515)
 texture = ExtResource("7_j1fwd")
 
 [node name="Text" type="Label" parent="." unique_id=580201501]
 texture_filter = 1
-offset_left = -88.095085
-offset_top = -148.80927
-offset_right = 254.67938
-offset_bottom = -112.35571
-scale = Vector2(0.51391894, 0.51391894)
+offset_left = -141.66643
+offset_top = -227.38055
+offset_right = 829.7112
+offset_bottom = -147.38055
+scale = Vector2(0.29535812, 0.29535812)
 theme_override_colors/font_color = Color(0.15127608, 0.15127608, 0.15127608, 1)
 theme_override_constants/line_spacing = 1
 theme_override_fonts/font = ExtResource("5_rsyug")
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 37
 text = "teste de texto"
 autowrap_mode = 2
 
 [node name="Desenho" type="Sprite2D" parent="." unique_id=2017981174]
-position = Vector2(1.1904738, 47.61896)
-scale = Vector2(0.059999995, 0.059999995)
+position = Vector2(1.1920929e-07, 94.04733)
+scale = Vector2(0.09563759, 0.09563759)
 
 [node name="StampMark" type="Sprite2D" parent="." unique_id=58493034]
-position = Vector2(58.33323, 98.80936)
-scale = Vector2(0.35, 0.35)
+position = Vector2(80.95224, 152.38068)
+scale = Vector2(0.5578859, 0.5578859)
 texture = ExtResource("2_eftyu")
 
 [node name="AreaDetectorEnvelope" type="Area2D" parent="." unique_id=3377350]
-position = Vector2(-113.00001, -130.99998)
-scale = Vector2(0.88606715, 0.88606715)
+position = Vector2(-178.5711, -244.04724)
+scale = Vector2(1.4123552, 1.4123552)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDetectorEnvelope" unique_id=529688421]
 position = Vector2(127.222626, 256.67172)
@@ -167,7 +167,7 @@ scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("RectangleShape2D_fyey2")
 
 [node name="AreaDetectorStamp" type="Area2D" parent="." unique_id=803358022]
-scale = Vector2(0.8860671, 0.8860671)
+scale = Vector2(1.4123552, 1.4123552)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDetectorStamp" unique_id=138087032]
 position = Vector2(1.5556203, -17.458353)
@@ -176,13 +176,12 @@ shape = SubResource("RectangleShape2D_gr7t7")
 debug_color = Color(0.6187054, 0.534455, 0.08102646, 0.41960785)
 
 [node name="TextAux" type="Label" parent="." unique_id=232587272]
-offset_left = 123.80931
-offset_top = -207.1425
-offset_right = 654.3627
-offset_bottom = 762.298
-scale = Vector2(0.42857242, 0.42857242)
+offset_left = 188.09492
+offset_top = -484.52307
+offset_right = 627.3798
+offset_bottom = 484.91742
 theme_override_fonts/font = ExtResource("9_qlbgm")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 25
 text = "testes"
 vertical_alignment = 1
 autowrap_mode = 2

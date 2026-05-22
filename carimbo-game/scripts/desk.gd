@@ -40,26 +40,22 @@ var intro_active: bool = true
 func _ready() -> void:
 	DialogueManager.dialogue_started.connect(_on_dialogue_started)
 	DialogueManager.dialogue_finished.connect(_on_dialogue_finished)
-	
-	if GameManager.day == 1:
+
+	if GameManager.game_level == 1:
 		day_letters = day_one_letters
-	if GameManager.day == 2:
+		EventManager.day_started.emit(1)
+	elif GameManager.game_level == 2:
 		if GameManager.objetivo_atual == Constants.OBJETIVOS.VOLTAR_TRABALHAR:
 			GameManager.set_objetivo(Constants.OBJETIVOS.JULGAR_OUTRAS_CARTAS)
 		
 		day_letters = day_two_latters
 		GameManager.tutorial = false
 		call_deferred("unlock_stash")
-		
 	
 	desk_background.texture = sprite_closed
 	send_area_sprite.play("idle")
-	
 	tashed_area.monitoring = GameManager.stash_unlocked
-	
-	if GameManager.tutorial and GameManager.day == 1:
-		call_deferred("handle_tutorial_letter")
-	
+
 	for i in day_letters.size():
 		var desk_letter: DeskLetter = desk_letter_scene.instantiate()
 		add_child(desk_letter)
@@ -67,7 +63,6 @@ func _ready() -> void:
 		desk_letter.rotation_degrees = randi_range(-20, 20)
 		desk_letter.letter_index = i
 		desk_letter.z_index = i + 1
-		 
 
 func _input(event: InputEvent) -> void:
 	
@@ -88,30 +83,21 @@ func _pausar_jogo(event: InputEvent):
 		tela_pause.queue_free()
 
 func levantar():
-	get_tree().change_scene_to_file(Constants.UID_SCENES[Constants.TELAS.CENARIO])
-
-	if GameManager.day == 2:
-		GameManager.finish_tutorial()
+	if GameManager.pode_levantar:
+		EventManager.player_leave.emit()
+		TransitionManager.change_scene(Constants.UID_SCENES[Constants.TELAS.WORLD])
 
 func generate_latter(letter_index: int) -> void:
 	if current_letter != null or day_letters.is_empty():
 		return
 	
-	if GameManager.tutorial and GameManager.tutorial_phase == 1:
-		GameManager.clear_tutorial()
-	
 	current_letter_resource = day_letters[letter_index]
 	
-	if current_letter_resource.sender_name == "Lívia":
-		handle_livia_letter()
-	
-	if current_letter_resource.sender_name == "Benjamin":
-		handle_benjamin_arrival()
+	EventManager.letter_spawned.emit(current_letter_resource)
 	
 	current_letter = letter_scene.instantiate()
 	add_child(current_letter)
 	current_letter.global_position = $LetterSpawn.global_position
-
 	current_letter.letter_stashed.connect(_on_letter_stashed)
 	current_letter.setup_from_resource(current_letter_resource, letter_final_spawn.position)
 
@@ -127,10 +113,6 @@ func validate_letter(letter):
 		return
 		
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
-	
-	if GameManager.tutorial and GameManager.tutorial_phase == 6:
-		GameManager.set_objetivo(Constants.OBJETIVOS.JULGAR_CARTAS)
-		GameManager.finish_tutorial()
 	
 	var correct = letter.applied_stamp == letter.correct_stamp
 	letter.queue_free()
@@ -185,6 +167,9 @@ func _on_pile_button_pressed() -> void:
 	generate_latter(0)
 
 func resolve_letter(res: LetterResource, decision: String, correct: bool = false):
+	EventManager.player_sent_letter.emit()
+	EventManager.letter_resolved.emit(res, decision)
+	
 	match decision:
 		"send":
 			if correct:
@@ -209,19 +194,11 @@ func resolve_letter(res: LetterResource, decision: String, correct: bool = false
 
 	desk_background.texture = sprite_closed
 	GameManager.letters_processed += 1
-	
-	if current_letter_resource.sender_name == "Thiago" and suspicious_tashed > 0:
-		finish_desk()
 
 func unlock_stash():
-	DialogueManager.start_dialogue([
-		{
-			"text": "Talvez eu devesse guardar essas cartas estranhas?"
-		}
-	], false)
+	EventManager.stash_unlocked_event.emit()
 	GameManager.stash_unlocked = true
 	tashed_area.monitoring = true
-	
 
 func _on_tashed_area_area_entered(area: Area2D) -> void:
 	if area.name == "AreaDetectorEnvelope" and not in_focus_mode and GameManager.stash_unlocked:
@@ -234,10 +211,6 @@ func _on_tashed_area_area_entered(area: Area2D) -> void:
 		elif suspicious_tashed >= 5:
 			desk_background.texture = sprites[3]
 
-func finish_desk():
-	DialogueManager.start_dialogue([{"text": "Eu deveria ir tirar satisfação com ele agora"}], false)
-	GameManager.start_tutorial()
-
 func _on_tashed_area_area_exited(area: Area2D) -> void:
 	if area.name == "AreaDetectorEnvelope":
 		desk_background.texture = sprite_closed
@@ -247,68 +220,8 @@ func _on_dialogue_started():
 		in_focus_mode = true
 	
 func _on_dialogue_finished():
-	if GameManager.tutorial and GameManager.tutorial_phase == 0:
-		GameManager.tutorial_phase += 1
-		GameManager.next_tutorial(0)
-	
-	if GameManager.tutorial and GameManager.tutorial_phase == 6:
-		GameManager.tutorial_phase += 1
-		GameManager.next_tutorial(6)
-		GameManager.pode_levantar = true
-	
-	if GameManager.tutorial and GameManager.day == 2 and suspicious_tashed > 0:
-		GameManager.tutorial_phase += 1
-		GameManager.next_tutorial(6)
-		GameManager.pode_levantar = true
-	
 	if DialogueManager.block_input:
 		in_focus_mode = false
 		
 	if GameManager.day == 2 and GameManager.objetivo_atual == Constants.OBJETIVOS.JULGAR_OUTRAS_CARTAS:
 		desk_background.texture = sprites[0]
-	
-func handle_benjamin_arrival():
-	DialogueManager.start_dialogue([
-		{
-			"text": "Essa carta é… diferente."
-		},
-		{
-			"text": "Talvez eu devesse perguntar alguem sobre"
-		}
-	], false)
-	
-	GameManager.start_tutorial()
-
-func handle_livia_letter():
-	DialogueManager.start_dialogue([
-		{
-			"text": "A carta apresenta palavras em uma letra bem ilegível"
-		},
-		{
-			"text": "É visível que a criança se empenhou para escrever, mas ainda não sabe como"
-		},
-		{
-			"text": "Abaixo do indecifrável, existe um desenho feito de giz de cera"
-		},
-		{
-			"text": "Ainda que meio torta e com traços difíceis de compreender"
-		},
-		{
-			"text": "Parecia uma casa. Talvez uma casa de bonecas?"
-		}
-	], false)
-
-func handle_tutorial_letter():
-	DialogueManager.start_dialogue([
-		{
-			"text": "Primeiro dia de trabalho"
-		},
-		{
-			"text": "Coisa super fácil, apenas pegar as cartas e carimbar"
-		},
-		{
-			"text": "Se a criança merecer o presente, carimbo verde. Caso não, carimbo vermelho"
-		},
-	], false)
-			
-	GameManager.start_tutorial()

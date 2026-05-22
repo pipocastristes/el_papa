@@ -1,0 +1,24 @@
+[gd_resource type="Theme" format=3 uid="uid://4h2384ue2d34"]
+
+[ext_resource type="FontFile" uid="uid://chnx81mwq17x0" path="res://fonts/VT323-Regular.ttf" id="1_1k78v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1k78v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_re3ye"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p0mnf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tan47"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ldlv7"]
+
+[resource]
+Button/colors/font_color = Color(0.078431375, 0, 0, 1)
+Button/colors/font_hover_color = Color(0.21960784, 0.101960786, 0, 1)
+Button/font_sizes/font_size = 34
+Button/fonts/font = ExtResource("1_1k78v")
+Button/styles/disabled = SubResource("StyleBoxEmpty_1k78v")
+Button/styles/focus = SubResource("StyleBoxEmpty_re3ye")
+Button/styles/hover = SubResource("StyleBoxEmpty_p0mnf")
+Button/styles/normal = SubResource("StyleBoxEmpty_tan47")
+Button/styles/pressed = SubResource("StyleBoxEmpty_ldlv7")

@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://buh14ccpn2kjf"]
+
+[ext_resource type="Script" uid="uid://8bknjphdnx7s" path="res://scripts/fabrica.gd" id="1_k32ym"]
+[ext_resource type="Texture2D" uid="uid://b5j4alqatx6nx" path="res://sprites/cenarios/fabrica.png" id="2_m2qve"]
+[ext_resource type="Script" uid="uid://8a10qeoejo8i" path="res://scripts/door.gd" id="3_3yrad"]
+[ext_resource type="Texture2D" uid="uid://c6r7jp3v642tr" path="res://sprites/cenarios/fabrica_fore.png" id="3_m2qve"]
+[ext_resource type="Texture2D" uid="uid://wups61e4x2js" path="res://sprites/cenarios/light_door.png" id="4_wxpp6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bg0hs"]
+size = Vector2(243.5, 1123)
+
+[node name="Fabrica" type="Node2D" unique_id=544815582]
+script = ExtResource("1_k32ym")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1083576730]
+position = Vector2(959.99994, 545.99994)
+scale = Vector2(3, 3.0333333)
+texture = ExtResource("2_m2qve")
+
+[node name="Foreground" type="Sprite2D" parent="." unique_id=2118194625]
+z_index = 4
+position = Vector2(959.99994, 545.99994)
+scale = Vector2(3, 3.0333333)
+texture = ExtResource("3_m2qve")
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=1580176529]
+
+[node name="fab_dir" type="Marker2D" parent="SpawnPoints" unique_id=956257354]
+position = Vector2(1720, 1030)
+
+[node name="Interagiveis" type="Node2D" parent="." unique_id=482245048]
+
+[node name="RecursosHumanos" type="Area2D" parent="Interagiveis" unique_id=192009794]
+script = ExtResource("3_3yrad")
+spawn_destino = "rh_esq"
+texto_interacao = "Recursos Humanos"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interagiveis/RecursosHumanos" unique_id=2135214690]
+position = Vector2(1803.75, 552)
+shape = SubResource("RectangleShape2D_bg0hs")
+
+[node name="PointLight2D" type="PointLight2D" parent="Interagiveis/RecursosHumanos" unique_id=1173016501]
+position = Vector2(1797.5, 540.00006)
+scale = Vector2(1.2962962, 1)
+color = Color(1, 1, 0.50980395, 1)
+texture = ExtResource("4_wxpp6")

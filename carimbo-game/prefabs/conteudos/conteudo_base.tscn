@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://cpx68lclt7cy0"]
-
-[ext_resource type="Script" uid="uid://vcgfagq0myx6" path="res://scripts/conteudo_base.gd" id="1_cusdg"]
-
-[node name="ConteudoBase" type="Node2D" unique_id=1556899372]
-script = ExtResource("1_cusdg")

@@ -6,6 +6,9 @@ class_name Quadro
 func _ready():
 	super._ready()
 	
+	if GameManager.el_papa_foto:
+		monitoring = false
+	
 	color_rect.modulate.a = 0
 	
 func _on_body_entered(body):
@@ -24,3 +27,7 @@ func _on_body_exited(body):
 	if body.is_in_group("player"):
 		var tween = create_tween()
 		tween.tween_property(color_rect, "modulate:a", 0, 0.3)
+		
+func interagir(_player):
+	monitoring = false
+	GameManager.el_papa_foto = true

@@ -6,13 +6,14 @@ signal objetivo_atualizado(texto)
 # signal game_over
 
 var day: int = 1
+var game_level: int = 1
 var letters_processed: int = 0
 var objetivo_atual: Constants.OBJETIVOS
 
-var stash_unlocked: bool = false
-var pode_levantar: bool = false
-var el_papa_foto: bool = false
-
+var stash_unlocked := false
+var pode_levantar := false
+var el_papa_foto := false
+var trocando_sala := false
 
 var score: int = 0
 var suspicion: int = 0
@@ -26,8 +27,7 @@ var max_errors: int = 2
 var suspicious_letters: Array[LetterResource] = []
 var suspicious_stashed_total: int = 0
 
-var tutorial: bool = true
-var tutorial_phase: int = 0
+var tutorial := true
 var tutorial_instance
 var tutorial_scene = preload(Constants.UID_SCENES[Constants.TELAS.TUTORIAL])
 
@@ -45,18 +45,8 @@ func set_objetivo(novo_objetivo: Constants.OBJETIVOS):
 	emit_signal("objetivo_atualizado", text)
 
 func start_tutorial():
-	tutorial = true
 	tutorial_instance = tutorial_scene.instantiate()
-	get_tree().root.add_child(tutorial_instance)
-
-func next_tutorial(res: int):
-	if tutorial_instance:
-		tutorial_instance.next(res)
-		print(tutorial_phase)
-
-func clear_tutorial():
-	if tutorial_instance:
-		tutorial_instance.clear()
+	get_tree().root.add_child.call_deferred(tutorial_instance)
 
 func finish_tutorial():
 	if tutorial_instance:
@@ -64,6 +54,10 @@ func finish_tutorial():
 		tutorial_instance = null
 		tutorial = false
 		
+func next_level():
+	game_level += 1
+	print("Next level: ", game_level)
+		
 func next_day():
 	day += 1
-	print(day)
+	print("Next day: ", day)

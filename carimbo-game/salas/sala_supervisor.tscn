@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://cchabkie6bchw"]
+
+[ext_resource type="Script" uid="uid://c8hcd8hvqvosf" path="res://scripts/sala_supervisor.gd" id="1_pqy20"]
+[ext_resource type="Texture2D" uid="uid://c33yiogp1rpgs" path="res://sprites/cenarios/sala_supervisor.png" id="2_jyepw"]
+[ext_resource type="Texture2D" uid="uid://wups61e4x2js" path="res://sprites/cenarios/light_door.png" id="3_dxt48"]
+[ext_resource type="Script" uid="uid://8a10qeoejo8i" path="res://scripts/door.gd" id="3_jyepw"]
+[ext_resource type="Script" uid="uid://4ig0g3bu8b5b" path="res://scripts/supervisor.gd" id="4_6auui"]
+[ext_resource type="Texture2D" uid="uid://4oq3vny7lljb" path="res://sprites/Supervisor misterioso jogando cartas foras.png" id="5_epbyj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1h6f0"]
+size = Vector2(249, 1088)
+
+[node name="SalaSupervisor" type="Node2D" unique_id=811475282]
+script = ExtResource("1_pqy20")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1622621019]
+position = Vector2(959.8247, 539.96027)
+scale = Vector2(3.0002205, 3.0002205)
+texture = ExtResource("2_jyepw")
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=453798158]
+
+[node name="principal" type="Marker2D" parent="SpawnPoints" unique_id=530698682]
+position = Vector2(152, 1030)
+
+[node name="Interagiveis" type="Node2D" parent="." unique_id=574377666]
+
+[node name="Corredor1" type="Area2D" parent="Interagiveis" unique_id=183548915]
+script = ExtResource("3_jyepw")
+cena_destino = 3
+spawn_destino = "corredor_1_dir"
+texto_interacao = "Corredor"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interagiveis/Corredor1" unique_id=1071562158]
+position = Vector2(114.5, 534)
+shape = SubResource("RectangleShape2D_1h6f0")
+
+[node name="PointLight2D" type="PointLight2D" parent="Interagiveis/Corredor1" unique_id=479735277]
+position = Vector2(119.99999, 540)
+rotation = 3.1415927
+scale = Vector2(1.2962962, 1)
+color = Color(1, 1, 0.50980395, 1)
+texture = ExtResource("3_dxt48")
+
+[node name="Supervisor" type="Area2D" parent="Interagiveis" unique_id=82021112]
+position = Vector2(555, 362.00003)
+scale = Vector2(2.1585052, 2.158505)
+script = ExtResource("4_6auui")
+texto_interacao = "Supervisor"
+
+[node name="Sprite" type="Sprite2D" parent="Interagiveis/Supervisor" unique_id=978173436]
+position = Vector2(132.49911, 101.4591)
+scale = Vector2(1.383582, 1.383582)
+texture = ExtResource("5_epbyj")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Interagiveis/Supervisor" unique_id=477650147]
+polygon = PackedVector2Array(94.04654, 37.062668, 94.973114, 34.282974, 93.58325, 28.260284, 90.80356, 21.311035, 89.87698, 12.508636, 91.73013, 5.559387, 95.89969, 0.9265442, 95.4364, -4.169571, 94.04654, -6.9492645, 94.50983, -12.971954, 95.89969, -14.361801, 96.362976, -15.751663, 98.216095, -15.751663, 99.14267, -13.898529, 100.99579, -12.508667, 101.92236, -11.11882, 102.84894, -12.508667, 101.459076, -13.898529, 99.60596, -15.288376, 97.75281, -16.678223, 96.82623, -17.604797, 94.50983, -19.921219, 88.95044, -19.921219, 85.70746, -23.1642, 88.48715, -25.480621, 91.73013, -25.943893, 92.65671, -30.11345, 94.50983, -33.819717, 96.82623, -33.35643, 98.67938, -31.503296, 98.67938, -26.40718, 100.069244, -26.870468, 101.92236, -29.650162, 102.84894, -29.18689, 102.84894, -20.384491, 104.23877, -21.311066, 104.23877, -22.237625, 105.62863, -22.237625, 106.55521, -24.09076, 107.01849, -23.627487, 107.01849, -21.311066, 105.62863, -15.751663, 110.261475, -19.457932, 113.04117, -19.457932, 116.28415, -16.678223, 126.93967, -33.819717, 130.64594, -31.503296, 132.0358, -25.017334, 135.27878, -25.017334, 136.20535, -20.384491, 134.3522, -19.457932, 126.47638, -18.994644, 120.91699, -12.508667, 120.91699, -11.11882, 125.08655, -15.288376, 127.86624, -14.8250885, 131.10922, -7.875839, 129.2561, -4.6328583, 127.402954, -3.7062836, 127.86624, 0.9265442, 130.64594, 3.2429657, 132.49908, 7.8758087, 133.42566, 11.11879, 132.96237, 16.678192, 131.57251, 25.480576, 129.71939, 33.819687, 128.32953, 37.525955, 142.69131, 43.085358, 146.86087, 49.108047, 149.64056, 62.079987, 156.12653, 96.82626, 169.09848, 94.04654, 170.02505, 91.73013, 166.78207, 90.80356, 183.92355, 73.66208, 199.21191, 82.92775, 198.28534, 87.097305, 182.07043, 99.60596, 179.29071, 103.312225, 148.25073, 119.52716, 142.22803, 120.91699, 135.27878, 97.28955, 136.20535, 135.74207, 140.8382, 167.24536, 146.86087, 211.72058, 142.69131, 223.30267, 140.37491, 227.00894, 135.27878, 229.78864, 128.32953, 234.88477, 124.15997, 237.20117, 116.28415, 235.81134, 90.80356, 228.3988, 73.66208, 228.3988, 69.49252, 222.3761, 69.029236, 205.6979, 71.34564, 200.13849, 72.735504, 178.82745, 82.00116, 119.52716, 82.00116, 109.79819, 75.5152, 109.79819, 67.63937, 105.165375, 64.39639, 98.67938, 65.32297, 84.3176, 69.95581, 60.69014, 74.12537, 49.108047, 76.44177, 41.232224, 88.48715, 39.842377)
+
+[connection signal="interagido" from="Interagiveis/Supervisor" to="." method="_on_supervisor_interagido"]

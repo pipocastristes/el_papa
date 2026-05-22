@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://drgsnnyju2haj"]
+
+[ext_resource type="Script" uid="uid://bycivwgx5oip8" path="res://scripts/escritorio.gd" id="1_52s4w"]
+[ext_resource type="Texture2D" uid="uid://dwq1oxknmcju6" path="res://sprites/cenarios/escritorio.png" id="2_5fcxu"]
+[ext_resource type="Script" uid="uid://bkp71e6n68tng" path="res://scripts/desk_door.gd" id="3_2oe7j"]
+[ext_resource type="Texture2D" uid="uid://wups61e4x2js" path="res://sprites/cenarios/light_door.png" id="4_pm60m"]
+[ext_resource type="Script" uid="uid://8a10qeoejo8i" path="res://scripts/door.gd" id="5_o2r8j"]
+[ext_resource type="Texture2D" uid="uid://dnkwmfo6iwrhq" path="res://sprites/cenarios/luz_porta_escritorio.png" id="6_02m4f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvw1l"]
+size = Vector2(245, 1087)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0wdv"]
+size = Vector2(311, 692)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52s4w"]
+size = Vector2(421, 906.5)
+
+[node name="Escritorio" type="Node2D" unique_id=1895165000]
+script = ExtResource("1_52s4w")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1686719442]
+position = Vector2(967.3253, 539.50006)
+scale = Vector2(1.5114456, 1.5111421)
+texture = ExtResource("2_5fcxu")
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=195589741]
+
+[node name="porta" type="Marker2D" parent="SpawnPoints" unique_id=1676531032]
+position = Vector2(296, 1030)
+
+[node name="inicio" type="Marker2D" parent="SpawnPoints" unique_id=131090558]
+position = Vector2(1713, 1030)
+
+[node name="entrada" type="Marker2D" parent="SpawnPoints" unique_id=174547430]
+position = Vector2(1155, 1030)
+
+[node name="Interagiveis" type="Node2D" parent="." unique_id=429650557]
+
+[node name="Desk" type="Area2D" parent="Interagiveis" unique_id=212257244]
+modulate = Color(1, 1, 1, 0.259)
+position = Vector2(1895, 397)
+script = ExtResource("3_2oe7j")
+texto_interacao = "Mesa de Trabalho"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interagiveis/Desk" unique_id=445714293]
+position = Vector2(-80.5, 143.5)
+shape = SubResource("RectangleShape2D_uvw1l")
+
+[node name="PointLight2D" type="PointLight2D" parent="Interagiveis/Desk" unique_id=1025364260]
+position = Vector2(-117.75, 142)
+scale = Vector2(1.6746032, 1.0037037)
+color = Color(1, 1, 0.50956357, 1)
+energy = 0.5
+texture = ExtResource("4_pm60m")
+
+[node name="Door" type="Area2D" parent="Interagiveis" unique_id=970082481]
+position = Vector2(196, 362)
+script = ExtResource("5_o2r8j")
+cena_destino = 3
+spawn_destino = "corredor_1_escr"
+light_max = 1.2
+texto_interacao = "Corredor"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interagiveis/Door" unique_id=27922199]
+position = Vector2(99.5, 158)
+shape = SubResource("RectangleShape2D_k0wdv")
+
+[node name="PointLight2D" type="PointLight2D" parent="Interagiveis/Door" unique_id=83997709]
+position = Vector2(98.37501, 157.75003)
+scale = Vector2(1.5182927, 1.5667422)
+color = Color(0.99607843, 0.96862745, 0.7294118, 1)
+texture = ExtResource("6_02m4f")
+
+[node name="PontoOnibus" type="Area2D" parent="Interagiveis" unique_id=433429272]
+script = ExtResource("5_o2r8j")
+cena_destino = 6
+spawn_destino = "ponto_dir"
+texto_interacao = "Ponto de Ônibus"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interagiveis/PontoOnibus" unique_id=1381499365]
+position = Vector2(1161.5, 625.25)
+shape = SubResource("RectangleShape2D_52s4w")
+
+[node name="PointLight2D" type="PointLight2D" parent="Interagiveis/PontoOnibus" unique_id=2101809291]
+position = Vector2(1161.5001, 625.18555)
+scale = Vector2(2.053659, 2.0536592)
+texture = ExtResource("6_02m4f")

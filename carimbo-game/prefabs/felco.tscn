@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://bmyu4ughrjvi5"]
 
 [ext_resource type="Script" uid="uid://d1q7uikybi2xd" path="res://scripts/player.gd" id="1_m1t40"]
-[ext_resource type="Texture2D" uid="uid://br3xbve8ddy0u" path="res://sprites/personagens/Felco/Felco andando/Felco Andando 1.png" id="2_751hb"]
-[ext_resource type="Texture2D" uid="uid://n5hcgvp3k014" path="res://sprites/personagens/Felco/Felco andando/Felco Andando 2.png" id="3_iivs7"]
-[ext_resource type="Texture2D" uid="uid://bh55ir4035yjs" path="res://sprites/personagens/Felco/Felco andando/Felco Andando 3.png" id="4_p3wb6"]
-[ext_resource type="Texture2D" uid="uid://di7i2l8h7qnhu" path="res://sprites/personagens/Felco/Felco andando/Felco Andando 4.png" id="5_36n4b"]
-[ext_resource type="Texture2D" uid="uid://bu0nxhmsxdnpt" path="res://sprites/personagens/Felco/Felco andando/Felco Andando 5.png" id="6_fcum5"]
-[ext_resource type="Texture2D" uid="uid://dfph5p8al5tgw" path="res://sprites/personagens/Felco/Felco andando/Felco Andando 6.png" id="7_ujme7"]
-[ext_resource type="Texture2D" uid="uid://7eutfc32lhg8" path="res://sprites/personagens/Felco/Felco andando/Felco Andando 7.png" id="8_8usqs"]
-[ext_resource type="Texture2D" uid="uid://bure40ck23ot6" path="res://sprites/personagens/Felco/Felco andando/Felco Andando 8.png" id="9_lc11n"]
+[ext_resource type="Texture2D" uid="uid://c03dy5iv5qvw6" path="res://sprites/personagens/Felco/walk/felco_walk_n_1.png" id="2_751hb"]
 [ext_resource type="FontFile" uid="uid://chnx81mwq17x0" path="res://fonts/VT323-Regular.ttf" id="10_751hb"]
+[ext_resource type="Texture2D" uid="uid://ca3og18i2h46j" path="res://sprites/personagens/Felco/walk/felco_walk_n_2.png" id="10_lc11n"]
+[ext_resource type="Texture2D" uid="uid://2fetcpfbmo3y" path="res://sprites/personagens/Felco/walk/felco_walk_n_3.png" id="11_u1eat"]
+[ext_resource type="Texture2D" uid="uid://d2614mysrqvf5" path="res://sprites/personagens/Felco/walk/felco_walk_n_4.png" id="12_pf7ai"]
+[ext_resource type="Texture2D" uid="uid://cxo74gdefg6xv" path="res://sprites/personagens/Felco/walk/felco_walk_n_5.png" id="13_l8rp4"]
+[ext_resource type="Texture2D" uid="uid://g1h1pb47xp2u" path="res://sprites/personagens/Felco/walk/felco_walk_n_6.png" id="14_2uo6b"]
+[ext_resource type="Texture2D" uid="uid://c7vbblpw3dc7s" path="res://sprites/personagens/Felco/walk/felco_walk_n_7.png" id="15_6w6j2"]
+[ext_resource type="Texture2D" uid="uid://c6ps1jv0nyypl" path="res://sprites/personagens/Felco/walk/felco_walk_n_8.png" id="16_04354"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_14usy"]
 animations = [{
@@ -23,51 +23,54 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_iivs7")
+"texture": ExtResource("10_lc11n")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_p3wb6")
+"texture": ExtResource("11_u1eat")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_36n4b")
+"texture": ExtResource("12_pf7ai")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_fcum5")
+"texture": ExtResource("13_l8rp4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_ujme7")
+"texture": ExtResource("14_2uo6b")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_8usqs")
+"texture": ExtResource("15_6w6j2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_lc11n")
+"texture": ExtResource("16_04354")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_2uo6b")
 }],
 "loop": true,
-"name": &"run",
-"speed": 8.0
+"name": &"walk",
+"speed": 9.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w5fvh"]
-radius = 20.0
-height = 198.0
+radius = 16.600002
+height = 215.99995
 
 [node name="felco" type="CharacterBody2D" unique_id=1326828819 groups=["player"]]
 light_mask = 15
 visibility_layer = 15
 scale = Vector2(2.5, 2.5)
 script = ExtResource("1_m1t40")
+speed = 350.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=372384496]
-position = Vector2(0.19999695, -101.19998)
+position = Vector2(8.881784e-16, -127.2)
 sprite_frames = SubResource("SpriteFrames_14usy")
-animation = &"run"
-frame_progress = 0.09564172
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=978987739]
 light_mask = 3
 visibility_layer = 3
-position = Vector2(0.19999695, -101.19998)
+position = Vector2(0.19999696, -107.99998)
 shape = SubResource("CapsuleShape2D_w5fvh")
 
 [node name="Interação" type="Node2D" parent="." unique_id=866232308]
@@ -75,9 +78,9 @@ position = Vector2(0.19999695, -101.19998)
 
 [node name="Label" type="Label" parent="Interação" unique_id=994880039]
 offset_left = -16.0
-offset_top = -124.8
+offset_top = -128.80011
 offset_right = 114.0
-offset_bottom = -99.8
+offset_bottom = -103.80011
 scale = Vector2(0.2480002, 0.2480002)
 theme_override_fonts/font = ExtResource("10_751hb")
 theme_override_font_sizes/font_size = 25

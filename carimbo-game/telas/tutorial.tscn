@@ -10,10 +10,24 @@
 script = ExtResource("1_02tug")
 streams = Array[AudioStream]([ExtResource("3_4w3ld"), ExtResource("3_cw8yy"), ExtResource("4_rxlk5")])
 
-[node name="Label" type="Label" parent="." unique_id=1405131101]
-offset_left = 32.0
-offset_top = 29.0
-offset_right = 436.0
-offset_bottom = 52.0
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=238355785]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=933030430]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=2032913362]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1405131101]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("1_fhj6s")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 32

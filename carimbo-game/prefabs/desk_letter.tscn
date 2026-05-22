@@ -9,10 +9,11 @@ script = ExtResource("1_vmt3r")
 slide_stream = ExtResource("2_ao7o7")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1320832858]
-scale = Vector2(0.7, 0.7)
+scale = Vector2(1.2040002, 1.2040002)
 texture = ExtResource("1_65h8n")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2086234712]
+scale = Vector2(1.7200003, 1.7200003)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=257175745]
 polygon = PackedVector2Array(-17, -82, -33, -69, -51, -64, -85, -51, 14, 76, 15, 83, 85, 35, 62, 8, 45, -8, 18, -41, 9, -54, 1, -61, -5, -66)

@@ -63,8 +63,6 @@ func _input(event: InputEvent) -> void:
 						return
 
 					if is_mouse_over() and desk.held_stamp == null:
-						if GameManager.tutorial and GameManager.tutorial_phase == 3:
-							GameManager.clear_tutorial()
 						dragging = true;
 						offset = global_position - get_global_mouse_position()
 				else:
@@ -72,18 +70,14 @@ func _input(event: InputEvent) -> void:
 					check_drop()
 
 	if event is InputEventMouseMotion and dragging:
-		if GameManager.tutorial and GameManager.tutorial_phase == 3:
-			GameManager.tutorial_phase += 1
-			GameManager.next_tutorial(3)
 		global_position = get_global_mouse_position() + offset
 
 
 func toggle_focus():
+	EventManager.player_entered_reading_mode.emit()
+	
 	var desk: Desk = get_tree().current_scene
 	var camera: Camera2D = desk.get_node("DeskCamera")
-	
-	if GameManager.tutorial and GameManager.tutorial_phase != 2:
-		return
 	
 	is_focused = !is_focused
 	desk.in_focus_mode = is_focused
@@ -103,10 +97,6 @@ func toggle_focus():
 		await tween.finished
 		text_aux.visible = true
 	else:
-		if GameManager.tutorial and GameManager.tutorial_phase == 2:
-			GameManager.tutorial_phase += 1
-			GameManager.next_tutorial(2)
-
 		tween.tween_property(self, "scale", current_size, 0.3)
 		tween.tween_property(self, "global_position", current_position, 0.3)
 		z_index = 1
@@ -194,15 +184,9 @@ func _on_open_finished():
 	tween.tween_property(envelope, "position", Vector2(-150, -50), 0.4).set_trans(Tween.TRANS_QUART).set_ease(Tween.EaseType.EASE_OUT)
 	tween.tween_property(envelope, "rotation_degrees", -15.0, 0.4)
 	tween.tween_property(envelope, "modulate:a", 0.6, 0.4)
-	
-	if GameManager.tutorial and GameManager.tutorial_phase == 1:
-		GameManager.tutorial_phase += 1
-		GameManager.next_tutorial(1)
 
 func apply_mark(stamp_type: String, pos: Vector2):
-	if GameManager.tutorial and GameManager.tutorial_phase == 5:
-		GameManager.tutorial_phase += 1
-		GameManager.next_tutorial(5)
+	EventManager.player_stamped_letter.emit()
 	
 	if applied_stamp != '':
 		return
