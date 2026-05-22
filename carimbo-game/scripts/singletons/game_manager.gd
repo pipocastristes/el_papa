@@ -6,6 +6,7 @@ signal objetivo_atualizado(texto)
 # signal game_over
 
 var day: int = 1
+var game_level: int = 1
 var letters_processed: int = 0
 var objetivo_atual: Constants.OBJETIVOS
 
@@ -53,6 +54,10 @@ func finish_tutorial():
 		tutorial_instance = null
 		tutorial = false
 		
+func next_level():
+	game_level += 1
+	print("Next level: ", game_level)
+		
 func next_day():
 	day += 1
-	print(day)
+	print("Next day: ", day)

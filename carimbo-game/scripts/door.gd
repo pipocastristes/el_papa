@@ -4,6 +4,7 @@ class_name Porta
 @export var cena_destino: Constants.CENAS_ORDENADAS
 @export var spawn_destino: String
 @export var light_max := 0.5
+@export var min_game_level := 1
 
 @onready var point_light_2d: PointLight2D = $PointLight2D
 
@@ -29,6 +30,9 @@ func _on_body_exited(body):
 
 
 func interagir(_player):
+
+	if GameManager.game_level < min_game_level:
+		return
 
 	var node = get_parent()
 

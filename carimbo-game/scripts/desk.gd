@@ -41,10 +41,10 @@ func _ready() -> void:
 	DialogueManager.dialogue_started.connect(_on_dialogue_started)
 	DialogueManager.dialogue_finished.connect(_on_dialogue_finished)
 
-	if GameManager.day == 1:
+	if GameManager.game_level == 1:
 		day_letters = day_one_letters
 		EventManager.day_started.emit(1)
-	elif GameManager.day == 2:
+	elif GameManager.game_level == 2:
 		if GameManager.objetivo_atual == Constants.OBJETIVOS.VOLTAR_TRABALHAR:
 			GameManager.set_objetivo(Constants.OBJETIVOS.JULGAR_OUTRAS_CARTAS)
 		
